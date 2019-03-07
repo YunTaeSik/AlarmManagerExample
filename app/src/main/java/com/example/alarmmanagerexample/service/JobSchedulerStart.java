@@ -17,11 +17,11 @@ public class JobSchedulerStart {
 
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(context));
         Job myJob = dispatcher.newJobBuilder()
-                .setService(NotificationJobFireBaseService.class) // the JobService that will be called
-                .setTag("TSLetterNotification")        // uniquely identifies the job
-                .setRecurring(true)
-                .setLifetime(Lifetime.FOREVER)
-                .setTrigger(Trigger.executionWindow(0, 60))
+                .setService(NotificationJobFireBaseService.class) // 잡서비스 등록
+                .setTag("TSLetterNotification")        // 태그 등록
+                .setRecurring(true) //재활용
+                .setLifetime(Lifetime.FOREVER) //다시켜도 작동을 시킬껀지?
+                .setTrigger(Trigger.executionWindow(0, 60)) //트리거 시간
                 .setReplaceCurrent(true)
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .build();
